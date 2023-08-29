@@ -10,6 +10,7 @@ enum Montserrat {
     case semibold
     case semiboldItalic
     case bold
+    case blackie
     
     func font(size: CGFloat) -> Font {
         switch self {
@@ -31,6 +32,8 @@ enum Montserrat {
             return .custom("Montserrat-SemiBoldIta", size: size)
         case .bold:
             return .custom("Montserrat-Bold", size: size)
+        case .blackie:
+            return .custom("Montserrat-Black", size: size)
             
         }
     }

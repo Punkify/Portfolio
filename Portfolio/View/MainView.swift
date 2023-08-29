@@ -7,15 +7,30 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @StateObject var appViewModel: AppViewModel = AppViewModel(appModel: AppModel())
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Color(UIColor.systemBackground)
+                .ignoresSafeArea()
+            ScrollView(.vertical, showsIndicators: false){
+                VStack {
+                DetailView()
+                    .padding()
+                
+                SkillsView(appViewModel: appViewModel, widthSize: UIScreen.main.bounds.width - 48)
+                    .padding(.top, 32)
+        
+                ExperiencesView(appViewModel: appViewModel)
+                    .padding(.top, 42)
+                }.padding(24)
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
